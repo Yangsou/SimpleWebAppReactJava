@@ -1,0 +1,63 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek
+*/
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: text;
+  font-size: 14px;
+}
+
+$color-red: #e22222;
+$color-green: rgb(30, 140, 130);
+$color-blackube: #0C1E2E;
+$color-black: #080808;
+$color-white: #ffffff;
+$color-silver: #ececec;
+
+$shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.117647) 0px 1px 4px;
+$transition: cubic-bezier(0.23, 1, 0.32, 1);
+$min-tablet: 768px;
+$md-tablet: 992px;
+$min-desktop: 1280px;
+
+@mixin displayFlex(){
+  display: flex;
+  display: -webkit-flex;
+}
+@mixin alignItems($label){
+    align-items: $label;
+    -webkit-align-items: $label;
+}
+@mixin justifyContent($label){
+    justify-content: $label;
+    -webkit-justify-content: $label;
+}
+@mixin transition($label){
+  transition: $label;
+  -webkit-transition: $label;
+  -moz-transition: $label;
+  -ms-transition: $label;
+}
+@mixin transform($label){
+  transform: $label;
+  -webkit-transform: $label;
+  -moz-transform: $label;
+}
+
+@mixin animation($param){
+  animation: $param;
+  -ms-animation: $param;
+  -webkit-animation: $param;
+  -moz-animation: $param;
+  -o-animation: $param;
+}
+

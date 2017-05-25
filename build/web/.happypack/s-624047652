@@ -1,0 +1,59 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+var initialState = {
+  data: [],
+  watches: [],
+  user: {},
+  order: []
+};
+
+var homeReducers = function homeReducers() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case 'ADD_POST':
+      return [action.post].concat(_toConsumableArray(state.data));
+    case 'ADD_POSTS':
+      return {
+        data: action.posts
+      };
+    case 'ADD_WATCHES':
+      state.watches = action.watches;
+      return _extends({}, state);
+    case 'ADD_ORDER':
+      state.order = [action.order].concat(_toConsumableArray(state.order));
+      return _extends({}, state);
+    case 'ADD_ORDERS':
+      state.order = action.orders;
+      return _extends({}, state);
+    case 'CHECK_USER_LOGIN':
+      state.user = action.user;
+      return _extends({}, state);
+    default:
+      return state;
+  };
+};
+//get post
+var getPosts = exports.getPosts = function getPosts(state) {
+  return state.home.data;
+};
+var getWatches = exports.getWatches = function getWatches(state) {
+  return state.home.watches;
+};
+var getUser = exports.getUser = function getUser(state) {
+  return state.home.user;
+};
+var getOrder = exports.getOrder = function getOrder(state) {
+  return state.home.order;
+};
+
+exports.default = homeReducers;

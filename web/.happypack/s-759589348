@@ -1,0 +1,309 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Footer = function (_Component) {
+    _inherits(Footer, _Component);
+
+    function Footer() {
+        _classCallCheck(this, Footer);
+
+        return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+    }
+
+    _createClass(Footer, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "footer",
+                null,
+                _react2.default.createElement(
+                    "div",
+                    { className: "footer padding" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "row" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-3" },
+                            _react2.default.createElement(
+                                "h3",
+                                { className: "footer_title" },
+                                "H\u1ED7 tr\u1EE3 kh\xE1ch h\xE0ng"
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "footer_lists" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "p",
+                                        { className: "red bold" },
+                                        "Hot line: +84987654321"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "C\xE2u h\u1ECFi th\u01B0\u1EDDng g\u1EB7p"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "G\u1EEDi y\xEAu c\u1EA7u h\u1ED5 tr\u1EE3"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "H\u01B0\u1EDBng d\u1EABn \u0111\u1EB7t h\xE0ng"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Ch\xEDnh s\xE1ch \u0111\u1ED5i tr\u1EA3"
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-3" },
+                            _react2.default.createElement(
+                                "h3",
+                                { className: "footer_title" },
+                                "V\u1EC1 WeWatch"
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "footer_lists" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Gi\u1EDBi thi\u1EC7u"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Tuy\u1EC3n d\u1EE5ng"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Ch\xEDnh s\xE1ch b\u1EA3o m\u1EADt"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "\u0110i\u1EC1u kho\u1EA3n s\u1EED d\u1EE5ng"
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-3" },
+                            _react2.default.createElement(
+                                "h3",
+                                { className: "footer_title" },
+                                "H\u1EE3p t\xE1c v\xE0 li\xEAn k\u1EBFt"
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "footer_lists" },
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Quy ch\u1EBF ho\u1EA1t \u0111\u1ED9ng s\xE0n GDTMDT"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Cras ultricies ligula"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Cras ultricies ligula"
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    null,
+                                    _react2.default.createElement(
+                                        "a",
+                                        { href: "#", className: "list" },
+                                        "Cras ultricies ligula"
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-3" },
+                            _react2.default.createElement(
+                                "h3",
+                                { className: "footer_title" },
+                                "Ph\u01B0\u01A1ng th\u1EE9c thanh to\xE1n"
+                            ),
+                            _react2.default.createElement(
+                                "ul",
+                                { className: "footer_lists" },
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "list-img" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        null,
+                                        _react2.default.createElement("img", { src: "assets/images/ic-visa.svg", alt: "" })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "list-img" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        null,
+                                        _react2.default.createElement("img", { src: "assets/images/ic-mastercard.svg", alt: "" })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "list-img" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        null,
+                                        _react2.default.createElement("img", { src: "assets/images/ic-jcb.svg", alt: "" })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "list-img" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        null,
+                                        _react2.default.createElement("img", { src: "assets/images/ic-cash.svg", alt: "" })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "list-img" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        null,
+                                        _react2.default.createElement("img", { src: "assets/images/ic-installment.svg", alt: "" })
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    "li",
+                                    { className: "list-img" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        null,
+                                        _react2.default.createElement("img", { src: "assets/images/ic-internet-banking.svg", alt: "" })
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                _react2.default.createElement("hr", { className: "divider divider-footer" }),
+                _react2.default.createElement(
+                    "div",
+                    { className: "container-fluid" },
+                    _react2.default.createElement(
+                        "div",
+                        { className: "row m-t-8" },
+                        _react2.default.createElement(
+                            "p",
+                            { className: "footer_cpright col-sm-6" },
+                            "WeWatch \xA9 2016. Allright reserved. H\xECnh \u1EA3nh v\xE0 d\u1EEF li\u1EC7u t\u1EEB jomashop"
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-6 pull-right footer_end-right" },
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                "Term & Condition"
+                            ),
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                "Privacy Policy"
+                            ),
+                            _react2.default.createElement(
+                                "a",
+                                { href: "#" },
+                                "Site map"
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Footer;
+}(_react.Component);
+
+;
+
+exports.default = Footer;

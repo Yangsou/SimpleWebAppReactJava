@@ -1,0 +1,531 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _homeActions = require('../../../action/homeActions');
+
+var _homeReducers = require('../../../reducers/homeReducers');
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * To change this license header, choose License Headers in Project Properties.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * To change this template file, choose Tools | Templates
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and open the template in the editor.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+//import $ from 'jquery';
+
+var Watch = function (_Component) {
+    _inherits(Watch, _Component);
+
+    function Watch(props) {
+        _classCallCheck(this, Watch);
+
+        var _this = _possibleConstructorReturn(this, (Watch.__proto__ || Object.getPrototypeOf(Watch)).call(this, props));
+
+        _this.handleClickTabButton = function (val) {
+            _this.setState({ tabValue: val });
+        };
+
+        _this.state = {
+            watch: {},
+            tabValue: 'detail'
+        };
+        _this.handleClickAddOrder = _this.handleClickAddOrder.bind(_this);
+        return _this;
+    }
+
+    _createClass(Watch, [{
+        key: 'initProduct',
+        value: function initProduct(id) {
+            var _this2 = this;
+
+            return (0, _homeActions.getWatchesById)(id).then(function (res) {
+                console.log(res);
+                _this2.setState({ watch: res });
+            });
+        }
+    }, {
+        key: 'handleMousemove',
+        value: function handleMousemove(e) {
+            var posX = event.offsetX ? event.offsetX : event.pageX - this.offsetLeft;
+            var posY = event.offsetY ? event.offsetY : event.pageY - this.offsetTop;
+            this.detail_zoom.style.backgroundPosition = -posX * 2.6 + 'px ' + -posY * 2.8 + 'px';
+            this.detail_zoom.style.display = 'block';
+        }
+    }, {
+        key: 'handleMouseLeave',
+        value: function handleMouseLeave(e) {
+            this.detail_zoom.style.display = 'none';
+        }
+    }, {
+        key: 'handleClickAddOrder',
+        value: function handleClickAddOrder() {
+            var idWatch = this.state.watch.IdProduct;
+            //        var cookies = new Cookies();
+            var idUser = this.props.user.id;
+            if (idUser) {
+                this.props.dispatch((0, _homeActions.addOrderById)(idUser, idWatch));
+            } else {
+                this.props.history.push("login");
+            }
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.initProduct(this.props.params.cuid);
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {}
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            console.log('order', this.props.order);
+            console.log('id', this.props.params.cuid);
+            var watch = this.state.watch;
+            return _react2.default.createElement(
+                'div',
+                { className: 'container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'row' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-sm-6 col-md-4 detail-images' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'detail-img_wrap row' },
+                            typeof watch.IdProduct != 'undefined' ? _react2.default.createElement('img', { onMouseLeave: this.handleMouseLeave.bind(this), onMouseMove: this.handleMousemove.bind(this), className: 'img-detail img-responsive pull-left', src: 'assets/images/' + watch.Image, alt: '' }) : '',
+                            typeof watch.IdProduct != 'undefined' ? _react2.default.createElement('div', { ref: function ref(node) {
+                                    _this3.detail_zoom = node;
+                                }, style: {
+                                    backgroundImage: 'url(./assets/images/' + watch.Image + ')'
+                                },
+                                className: 'detail-image_zoom' }) : ''
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'detail-img_group-btn' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'btn-wrap' },
+                                _react2.default.createElement(
+                                    'button',
+                                    { onClick: this.handleClickAddOrder,
+                                        style: { marginBottom: '30px' },
+                                        className: 'btn-default btn-primary btn-sm' },
+                                    'Th\xEAm v\xE0o gi\u1ECF h\xE0ng'
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-sm-6 col-md-8 detail-info' },
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            watch.Name
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'detail-info_text' },
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'Th\u01B0\u01A1ng hi\u1EC7u: ',
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'blue' },
+                                        watch.Brand
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'Sku: 12345678'
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'Gi\xE1 th\u1ECB tr\u01B0\u1EDDng: ',
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'price' },
+                                        watch.PriceDefault + ' \u0110'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'T\u1EA1i WeWatch: ',
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'price-current big blue' },
+                                        watch.PriceCurrent + ' \u0110'
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'p',
+                                    null,
+                                    'Ti\u1EBFt ki\u1EC7m: ',
+                                    _react2.default.createElement(
+                                        'span',
+                                        { className: 'price-sale' },
+                                        ((watch.PriceDefault - watch.PriceCurrent) / watch.PriceDefault * 100).toFixed(2),
+                                        '%'
+                                    )
+                                ),
+                                _react2.default.createElement('hr', null),
+                                _react2.default.createElement(
+                                    'p',
+                                    { style: {
+                                            lineHeight: '1.45',
+                                            letterSpacing: '0.035em'
+                                        },
+                                        className: 'list-text' },
+                                    _react2.default.createElement('i', { className: 'fa fa-circle', 'aria-hidden': 'true' }),
+                                    watch.Detail
+                                )
+                            )
+                        )
+                    ),
+                    _react2.default.createElement('div', { className: 'clear-fix' }),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'col-xs-12' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'detail-info tabs-wrap tabs-wrap-secondary' },
+                            _react2.default.createElement(
+                                'ul',
+                                { className: 'tabs' },
+                                _react2.default.createElement(
+                                    'li',
+                                    { onClick: function onClick() {
+                                            return _this3.handleClickTabButton("detail");
+                                        },
+                                        'data-tab': 'tabs-content-1', className: 'tabs_btn col-xs-4 ' + (this.state.tabValue == 'detail' ? 'active' : '') },
+                                    'Chi ti\u1EBFt s\u1EA3n ph\u1EA9m'
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    { onClick: function onClick() {
+                                            return _this3.handleClickTabButton("rate");
+                                        },
+                                        'data-tab': 'tabs-content-2', className: 'tabs_btn col-xs-4 ' + (this.state.tabValue == 'rate' ? 'active' : '') },
+                                    '\u0110\xE1nh gi\xE1'
+                                ),
+                                _react2.default.createElement(
+                                    'li',
+                                    { onClick: function onClick() {
+                                            return _this3.handleClickTabButton("comment");
+                                        },
+                                        'data-tab': 'tabs-content-3', className: 'tabs_btn col-xs-4 ' + (this.state.tabValue == 'comment' ? 'active' : '') },
+                                    'B\xECnh lu\u1EADn'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'tabs-content' },
+                                _react2.default.createElement(
+                                    'div',
+                                    { style: { display: this.state.tabValue == 'detail' ? 'block' : 'none' },
+                                        id: 'tabs-content-1', className: 'tabs-content_wrap' },
+                                    typeof watch.IdProduct != 'undefined' ? _react2.default.createElement(
+                                        'table',
+                                        { className: 'detail_tbl' },
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                '\u0110\u1ED3ng h'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.Name
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Brand'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.Brand
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Model number'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.ModelNumber
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Band color'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.BandColor
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Band length'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.BandLength
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Band material'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.BandMaterial
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Band width'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.BandWidth
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Calendar'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.Calendar
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Case Diameter'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.CaseDiameter
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Case material'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.CaseMaterial
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Case thickness'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.CaseThickness
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Clasp'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.Clasp
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Dial color'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.DialColor
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Dial Window Material Type'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.DialWindowMaterialType
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Display Type'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.DisplayType
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Item shape'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.ItemShape
+                                            )
+                                        ),
+                                        _react2.default.createElement(
+                                            'tr',
+                                            null,
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                'Water Depth'
+                                            ),
+                                            _react2.default.createElement(
+                                                'td',
+                                                null,
+                                                watch.WaterDepth
+                                            )
+                                        )
+                                    ) : ''
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { style: { display: this.state.tabValue == 'rate' ? 'block' : 'none' }, id: 'tabs-content-2', className: 'tabs-content_wrap' },
+                                    'Ch\u1EE9c n\u0103ng \u0111ang ph\xE1t tri\u1EC3n ...'
+                                ),
+                                _react2.default.createElement(
+                                    'div',
+                                    { style: { display: this.state.tabValue == 'comment' ? 'block' : 'none' }, id: 'tabs-content-3', className: 'tabs-content_wrap' },
+                                    'Ch\u1EE9c n\u0103ng \u0111ang ph\xE1t tri\u1EC3n ...'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Watch;
+}(_react.Component);
+
+;
+function mapStatetoProps(state) {
+    return {
+        order: (0, _homeReducers.getOrder)(state),
+        user: (0, _homeReducers.getUser)(state)
+    };
+}
+exports.default = (0, _reactRedux.connect)(mapStatetoProps)(Watch);

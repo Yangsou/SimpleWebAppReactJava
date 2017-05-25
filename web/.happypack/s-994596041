@@ -1,0 +1,171 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactRouter = require('react-router');
+
+var _homeActions = require('../../../action/homeActions');
+
+var _homeReducers = require('../../../reducers/homeReducers');
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+var _cuid = require('cuid');
+
+var _cuid2 = _interopRequireDefault(_cuid);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * To change this license header, choose License Headers in Project Properties.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * To change this template file, choose Tools | Templates
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and open the template in the editor.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+//import { instanceOf } from 'prop-types';
+//import { CookiesProvider, withCookies, Cookies } from 'react-cookie';
+
+
+var Login = function (_Component) {
+    _inherits(Login, _Component);
+
+    function Login(props) {
+        _classCallCheck(this, Login);
+
+        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+        _this.handleLogin = function () {
+            console.log('click login');
+            var email = _this.refs.email.value;
+            var password = _this.refs.password.value;
+            (0, _homeActions.checkUserLogin)(email, password).then(function (res) {
+                var token = (0, _cuid2.default)();
+                var cookies = new _universalCookie2.default();
+
+                if (typeof res.id !== 'undefined') {
+                    _this.setState({ user: res });
+                    (0, _homeActions.saveCookiesLogin)(token, res.id);
+                    _this.props.dispatch((0, _homeActions.fetchUser)(res));
+                    cookies.set('user', token, { path: '/' });
+                    _this.props.history.push("/");
+                }
+            });
+        };
+
+        _this.state = {
+            user: {}
+        };
+        //        this.handleLogin = this.handleLogin.bind(this);
+        return _this;
+    }
+
+    _createClass(Login, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            var cookies = new _universalCookie2.default();
+            if (typeof cookies.get('user') !== 'undefined') {
+                _reactRouter.hashHistory.push('/');
+            }
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            //        this.props.dispatch(checkUserLogin("user", "123"));
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            //        console.log('props', this.props);
+            return _react2.default.createElement(
+                'div',
+                { className: 'app_container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container padding container-main' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row form-login' },
+                        _react2.default.createElement(
+                            'h1',
+                            { className: 'col-xs-12', style: { margin: '15px 0 30px 0' } },
+                            '\u0110\u0103ng nh\u1EADp ho\u1EB7c \u0111\u0103ng k\xFD'
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-sm-6 clear-fix' },
+                            _react2.default.createElement(
+                                'h3',
+                                { className: 'login_title' },
+                                'Kh\xE1ch h\xE0ng \u0111\xE3 \u0111\u0103ng k\xFD'
+                            ),
+                            _react2.default.createElement(
+                                'p',
+                                { style: { marginBottom: '8px' } },
+                                'Email: '
+                            ),
+                            _react2.default.createElement('input', { ref: 'email', className: 'input-default', type: 'text', placeholder: 'Email' }),
+                            _react2.default.createElement(
+                                'p',
+                                { style: { margin: '16px 0 8px' } },
+                                'M\u1EADt kh\u1EA9u'
+                            ),
+                            _react2.default.createElement('input', { ref: 'password', className: 'input-default', type: 'password', placeholder: 'M\u1EADt kh\u1EA9u' }),
+                            _react2.default.createElement(
+                                'button',
+                                { onClick: this.handleLogin.bind(this), className: 'btn-default btn-sm btn-login', style: { marginTop: '15px', display: 'block' } },
+                                '\u0110\u0103ng nh\u1EADp'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-sm-6' },
+                            _react2.default.createElement(
+                                'h3',
+                                { className: 'login_title' },
+                                'Kh\xE1ch h\xE0ng m\u1EDBi'
+                            ),
+                            _react2.default.createElement(
+                                'p',
+                                { style: { marginBottom: '8px' } },
+                                'B\u1EB1ng c\xE1ch t\u1EA1o t\xE0i kho\u1EA3n v\u1EDBi c\u1EEDa h\xE0ng c\u1EE7a ch\xFAng t\xF4i, b\u1EA1n s\u1EBD c\xF3 th\u1EC3 di chuy\u1EC3n qua qu\xE1 tr\xECnh thanh to\xE1n nhanh h\u01A1n, l\u01B0u tr\u1EEF nhi\u1EC1u \u0111\u1ECBa ch\u1EC9 giao h\xE0ng, xem v\xE0 theo d\xF5i c\xE1c \u0111\u01A1n \u0111\u1EB7t h\xE0ng trong t\xE0i kho\u1EA3n c\u1EE7a b\u1EA1n v\xE0 h\u01A1n th\u1EBF n\u1EEFa.'
+                            ),
+                            _react2.default.createElement(
+                                'button',
+                                { className: 'btn-default btn-md btn-register' },
+                                '\u0110\u0103ng k\xFD'
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Login;
+}(_react.Component);
+
+function mapStateToProps(state) {
+    return {
+        user: (0, _homeReducers.getUser)(state)
+    };
+}
+Login.propTypes = {
+    //  cookies: instanceOf(Cookies).isRequired
+};
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Login);

@@ -1,0 +1,101 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 5, 2017, 6:26:54 PM
+    Author     : wladek
+*/
+
+.footer{
+    clear: both;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.footer_cpright{
+    color: rgba($color-white, .69);
+}
+.footer_end-right{
+    display: flex;
+    display: -webkit-flex;
+    justify-content: flex-end;
+    -webkit-justify-content: flex-end;
+    > a{
+        text-decoration: none;
+        margin: 0 8px;
+        color: rgba($color-white, .69);
+        &:hover{
+            color: $color-white;
+        }
+    }
+}
+
+footer {
+  border-top: 1px solid rgba(8, 8, 8, 0.1);
+  margin-top: 15px;
+  padding-bottom: 8px;
+  background: $color-black;
+  clear: both;
+}
+
+.footer-wrap .brand_logo {
+  color: #0980AA; }
+
+.footer_title, .footer_lists .list {
+  display: block;
+  margin-bottom: 1em; }
+
+.footer_title{
+    color: $color-white;
+}
+.footer_lists {
+  list-style: none; }
+  .footer_lists .red {
+    color: #e22222; }
+  .footer_lists .list {
+    position: relative;
+    padding: 0.25em 0;
+    margin-bottom: 0;
+    color: rgba($color-white, .69);
+    text-decoration: none;
+    opacity: 0.8; }
+    .footer_lists .list:hover {
+      text-decoration: underline;
+      opacity: 1;
+      color: #0980AA;
+      text-decoration: underline; }
+  .footer_lists .list-img {
+    display: inline-block;
+    margin: 4px;
+  }
+
+.footer_lists-socials li {
+  display: inline-block; }
+  .footer_lists-socials li:not(:first-child) {
+    margin-left: 0.5em; }
+  .footer_lists-socials li .fa-facebook {
+    color: rgba($color-white, 0.7); }
+    .footer_lists-socials li .fa-facebook:hover {
+      color: $color-white; }
+  .footer_lists-socials li .fa-youtube {
+    color: rgba(204, 24, 30, 0.7); }
+    .footer_lists-socials li .fa-youtube:hover {
+      color: #CC181E; }
+  .footer_lists-socials li .fa-twitter {
+    color: rgba(26, 147, 221, 0.7); }
+    .footer_lists-socials li .fa-twitter:hover {
+      color: #1A93DD; }
+
+.copyright {
+  font-family: "courier new";
+  font-size: 12px;
+  margin-top: 1em;
+  color: rgba(8, 8, 8, 0.6); }
+
+.p-l-15 {
+  padding-left: 45px; }
+
+.footer-small {
+  font-size: 0.9em;
+  color: rgba(8, 8, 8, 0.8); }

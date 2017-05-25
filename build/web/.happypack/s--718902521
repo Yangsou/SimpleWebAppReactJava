@@ -1,0 +1,18 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toggleShowNav = undefined;
+
+var _actionTypes = require('../contants/actionTypes');
+
+var _actionTypes2 = _interopRequireDefault(_actionTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var toggleShowNav = exports.toggleShowNav = function toggleShowNav() {
+  return {
+    type: _actionTypes2.default.TOGGLE_SHOW_NAV
+  };
+};

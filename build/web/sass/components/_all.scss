@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek
+*/
+@import "../base/define";
+// style
+body{
+  background-color: $color-white;
+  min-width: 320px;
+}
+
+.table{
+  display: table;
+}
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+.hidden,
+.hidden-xs,
+.hidden-sm{
+  display: none;
+}
+
+@media (min-width: 768px){
+    .hidden-xs{
+        display: block;
+    }
+}
+@media (min-width: 992px){
+    .hidden-sm{
+        display: block;
+    }
+}
+
+.img-responsive{
+  max-width: 100%;
+}
+
+.padding{
+  padding-left: 8px;
+  padding-right: 8px;
+  @media (min-width: 768px){
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+.padding-top-bottom{
+    padding-top: 8px;
+    padding-bottom: 8px;
+  @media (min-width: $min-tablet){
+      padding-top: 16px;
+      padding-bottom: 16px;
+  }
+}
+
+.link-ui{
+  padding: 4px 0;
+  text-decoration: none !important;
+  position: relative;
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $color-green;
+    opacity: .4;
+    @include transition(all 250ms ease);
+    @include transform(scale(0, 1));
+  }
+  &:hover{
+    text-decoration: none !important;
+    &::after{
+      @include transform(scale(1, 1));
+      opacity: 1;
+    }
+  }
+}
+
+.hr-clear{
+  clear: both;
+  height: 1px;
+  border: 0;
+  display: block;
+  margin: 8px 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+h1{
+    font-size: 2em;
+}
+h2{
+    font-size: 1.7em;
+}
+h3{
+    font-size: 1.5em;
+}
+h4{
+    font-size: 1.2em;
+}
+h5{
+    font-size: 1em;
+}

@@ -1,0 +1,168 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.addOrder = addOrder;
+exports.addOrderById = addOrderById;
+exports.addOrders = addOrders;
+exports.fetchOrder = fetchOrder;
+exports.addPost = addPost;
+exports.addPosts = addPosts;
+exports.getWatches = getWatches;
+exports.fetchWatches = fetchWatches;
+exports.fetchTypeWatches = fetchTypeWatches;
+exports.fetchWatchesByIdType = fetchWatchesByIdType;
+exports.fetchWatchesSale = fetchWatchesSale;
+exports.getWatchesById = getWatchesById;
+exports.addUser = addUser;
+exports.checkUserLogin = checkUserLogin;
+exports.fetchUser = fetchUser;
+exports.saveCookiesLogin = saveCookiesLogin;
+exports.getUserByIdCookie = getUserByIdCookie;
+exports.getUserById = getUserById;
+
+var _actionTypes = require('../contants/actionTypes');
+
+var _actionTypes2 = _interopRequireDefault(_actionTypes);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _cuid = require('cuid');
+
+var _cuid2 = _interopRequireDefault(_cuid);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function addOrder(order) {
+    return {
+        type: _actionTypes2.default.ADD_ORDER,
+        order: order
+    };
+}
+function addOrderById(idUser, idWatch) {
+    return function (dispatch) {
+        var id = (0, _cuid2.default)();
+        _jquery2.default.post("api", { scan: 'add_order', id: id, idUser: idUser, idWatch: idWatch }, function (res) {
+            var obj = {
+                id: id,
+                idUser: idUser,
+                idWatch: idWatch,
+                count: 1
+            };
+            dispatch(addOrder(obj));
+        });
+    };
+};
+
+function addOrders(orders) {
+    return {
+        type: 'ADD_ORDERS',
+        orders: orders
+    };
+}
+
+function fetchOrder(id) {
+    return function (dispatch) {
+        _jquery2.default.get("order", { scan: "getOrderByIdUser", idUser: id }, function (res) {
+            dispatch(addOrders(res));
+        });
+    };
+}
+//export function add
+
+function addPost(post) {
+    return {
+        type: _actionTypes2.default.ADD_POST,
+        post: post
+    };
+};
+
+function addPosts(posts) {
+    return {
+        type: _actionTypes2.default.ADD_POSTS,
+        posts: posts
+    };
+};
+
+function getWatches(watches) {
+    return {
+        type: _actionTypes2.default.ADD_WATCHES,
+        watches: watches
+    };
+}
+
+function fetchWatches() {
+    return function (dispatch) {
+        _jquery2.default.get("api", { count: 'all' }, function (res) {
+            dispatch(getWatches(res));
+        });
+    };
+};
+
+function fetchTypeWatches() {
+    //    return function(){
+    return _jquery2.default.get("api", { count: 'categories' }, function (res) {
+        return res;
+    });
+    //    };
+}
+
+function fetchWatchesByIdType(id) {
+    return _jquery2.default.get("api", { count: 'get_watches_by_id_type', id: id }, function (res) {
+        return res;
+    });
+}
+
+function fetchWatchesSale(limit) {
+    return _jquery2.default.get("api", { count: 'get_watches_sale', limit: limit }, function (res) {
+        return res;
+    });
+}
+
+function getWatchesById(id) {
+    return _jquery2.default.get("api", { count: 'get_watches_by_id', id: id }, function (res) {
+        return res;
+    });
+}
+
+function addUser(user) {
+    return {
+        type: _actionTypes2.default.CHECK_USER_LOGIN,
+        user: user
+    };
+}
+
+function checkUserLogin(email, password) {
+    return _jquery2.default.post("api", { scan: 'check_user_login', email: email, password: password }, function (res) {
+        return res;
+    });
+}
+
+function fetchUser(user) {
+    return function (dispatch) {
+        dispatch(addUser(user));
+    };
+}
+
+function saveCookiesLogin(token, idUser) {
+    return _jquery2.default.post("api", { scan: 'save_cookies', token: token, id: idUser }, function (res) {
+        return res;
+    });
+}
+
+function getUserByIdCookie(id) {
+    return function (dispatch) {
+        _jquery2.default.post("api", { scan: 'get_user_cookies', id: id }, function (res) {
+            dispatch(addUser(res));
+        });
+    };
+}
+
+function getUserById(id) {
+    return _jquery2.default.get("api", { scan: 'get_user_by_id', id: id }, function (res) {
+        return res;
+    });
+}

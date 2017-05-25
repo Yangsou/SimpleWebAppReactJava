@@ -1,0 +1,191 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Header = require('../../components/Header');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Navigation = require('../../components/Navigation');
+
+var _Navigation2 = _interopRequireDefault(_Navigation);
+
+var _HomeSlider = require('../components/HomeSlider');
+
+var _HomeSlider2 = _interopRequireDefault(_HomeSlider);
+
+var _reactRedux = require('react-redux');
+
+var _reactRouter = require('react-router');
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _cuid = require('cuid');
+
+var _cuid2 = _interopRequireDefault(_cuid);
+
+var _homeActions = require('../../../action/homeActions');
+
+var _SlideListProduct = require('../../components/SlideListProduct');
+
+var _SlideListProduct2 = _interopRequireDefault(_SlideListProduct);
+
+var _DailyDeals = require('../components/DailyDeals');
+
+var _DailyDeals2 = _interopRequireDefault(_DailyDeals);
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//var actions = require('../../../action/homeActions');
+var _require = require('../../../reducers/homeReducers'),
+    getPosts = _require.getPosts,
+    getWatches = _require.getWatches;
+// import database from '../../database/database';
+
+
+var Home = function (_Component) {
+    _inherits(Home, _Component);
+
+    function Home(props) {
+        _classCallCheck(this, Home);
+
+        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this, props));
+
+        _this.getProductByIdType = function (id) {
+            _this.initProductByIdType(id).then(function (res) {
+                _this.setState({ productByIdType: res });
+            });
+            return _this.state.productByIdType;
+        };
+
+        _this.state = {
+            page: 1,
+            category: [],
+            productByIdType: [],
+            productSale: []
+        };
+        _this.arrayProductById = ["1", "2"];
+        return _this;
+    }
+
+    _createClass(Home, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.initCategory();
+            this.props.dispatch((0, _homeActions.fetchWatches)());
+            this.initProductSale(15);
+            //        var cookies = new Cookies();
+            //        console.log('product cookies', cookies.get('user'));
+        }
+    }, {
+        key: 'initCategory',
+        value: function initCategory() {
+            var _this2 = this;
+
+            return (0, _homeActions.fetchTypeWatches)().then(function (res) {
+                // return res;
+                _this2.setState({ category: res });
+            });
+        }
+    }, {
+        key: 'initProductByIdType',
+        value: function initProductByIdType(id) {
+            return (0, _homeActions.fetchWatchesByIdType)(id).then(function (res) {
+                return res;
+            });
+        }
+    }, {
+        key: 'initProductSale',
+        value: function initProductSale(limit) {
+            var _this3 = this;
+
+            return (0, _homeActions.fetchWatchesSale)(limit).then(function (res) {
+                _this3.setState({
+                    productSale: res
+                });
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this4 = this;
+
+            var listCategory = this.state.category;
+
+            return _react2.default.createElement(
+                'div',
+                { className: 'app_container' },
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container padding container-main' },
+                    _react2.default.createElement(_HomeSlider2.default, null),
+                    _react2.default.createElement(_DailyDeals2.default, null),
+                    _react2.default.createElement('hr', { className: 'divider divider-silver m-t-15' }),
+                    _react2.default.createElement(
+                        'h1',
+                        { className: 'title-primary m-t-30 m-b-15 text-center' },
+                        _react2.default.createElement(
+                            'span',
+                            null,
+                            'Xu th\u1EBF hi\u1EC7n nay'
+                        )
+                    ),
+                    _react2.default.createElement(_SlideListProduct2.default, { arrayProduct: this.state.productSale }),
+                    listCategory.map(function (item, index) {
+                        var name = item.name;
+                        var id = item.id;
+                        //                this.initProductByIdType(id);                                                                 
+                        var arrayProduct = _this4.props.watches.filter(function (a) {
+                            return a.IDType == id;
+                        });
+                        return _react2.default.createElement(
+                            'div',
+                            null,
+                            _react2.default.createElement(
+                                'h1',
+                                { className: 'title-primary m-t-30 m-b-15 text-center' },
+                                _react2.default.createElement(
+                                    'span',
+                                    null,
+                                    name,
+                                    ' watches'
+                                )
+                            ),
+                            _react2.default.createElement(_SlideListProduct2.default, { arrayProduct: arrayProduct })
+                        );
+                    })
+                )
+            );
+        }
+    }]);
+
+    return Home;
+}(_react.Component);
+
+function mapStateToProps(state) {
+    return {
+        watches: getWatches(state)
+
+    };
+}
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Home);

@@ -1,0 +1,39 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.configure = undefined;
+
+var _redux = require('redux');
+
+var redux = _interopRequireWildcard(_redux);
+
+var _reduxThunk = require('redux-thunk');
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _navReducers = require('../reducers/navReducers');
+
+var _homeReducers = require('../reducers/homeReducers');
+
+var _homeReducers2 = _interopRequireDefault(_homeReducers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var configure = exports.configure = function configure() {
+  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  var reducer = redux.combineReducers({
+    nav: _navReducers.showNavMobile,
+    home: _homeReducers2.default
+  });
+
+  var store = redux.createStore(reducer, initialState, redux.compose(redux.applyMiddleware(_reduxThunk2.default), window.devToolsExtension ? window.devToolsExtension() : function (f) {
+    return f;
+  }));
+
+  return store;
+};

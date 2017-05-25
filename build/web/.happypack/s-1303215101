@@ -1,0 +1,172 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _ItemPost = require('./ItemPost');
+
+var _ItemPost2 = _interopRequireDefault(_ItemPost);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var actions = require('../../../action/homeActions');
+// import cuid from 'cuid';
+
+var dataExample = [{
+    img: "./assets/images/banner_main_omega_06.jpg",
+    href: '#'
+}, {
+    img: './assets/images/banner_main_highend.webp',
+    href: '#'
+}, {
+    img: './assets/images/banner_main_md_2017.webp',
+    href: '#'
+}];
+var slideIndex = 0;
+
+var HomeSlider = function (_Component) {
+    _inherits(HomeSlider, _Component);
+
+    function HomeSlider(props) {
+        _classCallCheck(this, HomeSlider);
+
+        var _this = _possibleConstructorReturn(this, (HomeSlider.__proto__ || Object.getPrototypeOf(HomeSlider)).call(this, props));
+
+        _this.state = {
+            page: 0,
+            slides: null
+        };
+        return _this;
+    }
+
+    _createClass(HomeSlider, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _slides = document.getElementsByClassName("slide_item");
+            this.setState({ slides: _slides });
+            this.showSlide(_slides, slideIndex);
+        }
+    }, {
+        key: 'handleClickPrev',
+        value: function handleClickPrev() {
+            this.showSlide(this.state.slides, slideIndex -= 1);
+        }
+    }, {
+        key: 'handleClickNext',
+        value: function handleClickNext() {
+            this.showSlide(this.state.slides, slideIndex++);
+        }
+    }, {
+        key: 'showSlide',
+        value: function showSlide(slides, n) {
+            var i;
+            if (n >= slides.length - 1) {
+                slideIndex = 0;
+            }
+            if (n < 0) {
+                slideIndex = slides.length - 1;
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex].style.display = "block";
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            //    console.log(this.props.arrayProduct);
+            return _react2.default.createElement(
+                'div',
+                { className: 'home-slider container' },
+                dataExample.map(function (item, index) {
+                    return _react2.default.createElement(
+                        'div',
+                        { className: 'slide_item fade', key: index },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'slide_item_wrap',
+                                style: {
+                                    backgroundImage: "url(" + item.img + ")"
+                                } },
+                            _react2.default.createElement('a', { href: item.href, className: 'slide_item_link-primary' })
+                        )
+                    );
+                }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'slide_item-fixed' },
+                    _react2.default.createElement(
+                        'h4',
+                        { className: 'title' },
+                        'Featured brands'
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Citizen'
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Seiko'
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Fosil'
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Omega'
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Rolex'
+                    ),
+                    _react2.default.createElement(
+                        'a',
+                        { href: '#' },
+                        'Tissot'
+                    )
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'slide_group-btn' },
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.handleClickPrev.bind(this),
+                            className: 'btn slide_btn slide_btn-prev' },
+                        _react2.default.createElement('span', { className: 'icon icon-arrow-left' })
+                    ),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.handleClickNext.bind(this),
+                            className: 'btn slide_btn slide_btn-next' },
+                        _react2.default.createElement('span', { className: 'icon icon-arrow-right' })
+                    )
+                )
+            );
+        }
+    }]);
+
+    return HomeSlider;
+}(_react.Component);
+
+exports.default = (0, _reactRedux.connect)()(HomeSlider);

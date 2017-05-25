@@ -1,0 +1,296 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek
+*/
+
+.header-top{
+    background-color: $color-black;
+    z-index: 99;
+}
+
+.text-white{
+    color: $color-white;
+}
+
+.header_menu{
+    z-index: 99;
+    display: inline-block;
+}
+.header_top_left p{
+    line-height: 30px;
+}
+.header_top_right{
+    @include displayFlex();
+    @include justifyContent(flex-end);
+}
+
+.header_menu_item{
+    @include displayFlex();
+    @include alignItems(center);
+    a{
+        @include displayFlex();
+        @include alignItems(center);
+        color: $color-white;
+        text-decoration: none;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+.header_menu_multi{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    min-width: 150px;
+    background: $color-green;
+    @include transform(translateY(100%));
+    box-shadow: $shadow;
+    a{
+        width: 100%;
+        @include justifyContent(center);
+        padding-top: 8px;
+        padding-bottom: 8px;
+        position: relative;
+        &:hover{
+            &::before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba($color-black, .1);
+            }
+        }
+    }
+}
+.header_menu_primary{
+    position: relative;
+    &:hover{
+        &.header_menu_item{
+            background: $color-green;
+        }
+        .header_menu_multi{
+            display: block;
+        }
+    }
+}
+.header_top_icon{
+    display: inline-block;
+}
+
+
+.header{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    z-index: 98;
+}
+.brand{
+    text-align: center;
+    @media (min-width: 768px){
+        text-align: left;
+    }
+    a{
+        font-family: Batik_Alin;
+        font-size: 4em;
+        color: $color-black
+    }
+}
+
+.header_search{
+    position: relative;
+    width: 100%;
+}
+
+.input, .btn{
+    outline: none;
+    border: none;
+}
+
+.input-default{
+    min-width: 250px;
+    height: 36px;
+    padding: 0 8px;
+    border-right: 2px;
+    border: 1px solid $color-blackube;
+}
+.header_search_input{
+    min-width: 100%;
+    width: 100%;
+    padding-right: 40px;
+    @media (min-width: 768px){
+        width: 260px;
+        min-width: inherit;
+        float: right;
+    }
+}
+
+.header_search_btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
+    background: $color-blackube;
+    span{
+        display: block;
+        margin: auto;
+    }
+}
+
+.nav_menu{
+    width: 100%;
+    position: relative;
+}
+.nav_menu_item{
+    display: inline-block;
+    a{
+        display: block;
+        padding: 8px;
+        text-decoration: none;
+        color: $color-black;
+        font-size: 1.1em;
+        position: relative;
+        .line{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $color-red;
+            visibility: hidden;
+            display: block;
+            @include transform(scale(0));
+            @include transition(all 450ms $transition);
+        }
+    }
+    &:hover{
+        a > .line{
+            visibility: visible;
+            @include transform(scale(1));
+        }
+        .nav_sub{
+            display: block;
+        }
+    }
+}
+
+.nav_sub{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    @include transform(translateY(100%));
+    display: none;
+}
+
+.home-slider{
+    position: relative;
+}
+.slide_item{
+    position: relative;
+    display: none;
+}
+
+.slide_item_wrap{
+    /*display: none;*/
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 246px;
+    width: 100%;
+    @media (min-width: 768px){
+        height: 327px;
+    }
+    @media (min-width: 992px){
+        height: 400px;
+    }
+}
+.slide_item_link-primary{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.slide_item-fixed{
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 150px;
+    padding: 16px 0;
+    background: rgba($color-black, 0.5);
+    user-slect: none;
+    -webkit-user-slect: none;
+    -moz-user-slect: none;
+    -ms-user-slect: none;
+    @media (min-width: 768px){
+        left: 80px;
+    }
+    .title{
+        padding: 16px 0 16px 16px;
+        color: $color-white;
+    }
+    a{
+        display: block;
+        padding: 4px 16px;
+        color: rgba($color-white, 0.8);
+        text-decoration: none;
+        &:hover{
+            color: $color-white;
+        }
+    }
+}
+
+.slide_btn{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    .icon{
+        display: block;
+        margin: auto;
+    }
+}
+.slide_btn-prev{
+    top: 50%;
+    left: 16px;
+    @include transform(translateY(-50%));
+    @include transition(all 450ms $transition);
+    background: rgba($color-black, 0.1);
+    &:hover{
+        background: rgba($color-black, .88);
+    }
+
+}
+.slide_btn-next{
+    top: 50%;
+    right: 16px;
+    @include transform(translateY(-50%));
+    @include transition(all 450ms $transition);
+    background: rgba($color-black, 0.1);
+    &:hover{
+        background: rgba($color-black, .88);
+    }
+}
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}

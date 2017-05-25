@@ -1,0 +1,173 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * To change this license header, choose License Headers in Project Properties.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * To change this template file, choose Tools | Templates
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and open the template in the editor.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+var DailyDeals = function (_Component) {
+    _inherits(DailyDeals, _Component);
+
+    function DailyDeals(props) {
+        _classCallCheck(this, DailyDeals);
+
+        return _possibleConstructorReturn(this, (DailyDeals.__proto__ || Object.getPrototypeOf(DailyDeals)).call(this, props));
+    }
+
+    _createClass(DailyDeals, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { className: "row m-t-8" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "col-sm-4 col-md-3 hidden-xs" },
+                    _react2.default.createElement(
+                        "a",
+                        { href: "#", className: "pos-relate" },
+                        _react2.default.createElement("img", { src: "assets/images/citizen-banner.jpg", className: "img-responsive" }),
+                        _react2.default.createElement(
+                            "button",
+                            { className: "btn btn-go-shop" },
+                            "Shop citizen"
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    "div",
+                    { className: "col-sm-8 col-md-9" },
+                    _react2.default.createElement(
+                        "h2",
+                        { className: "daily-title m-t-15 m-b-15 text-center" },
+                        "\u01AFu \u0111\xE3i h\xE0ng ng\xE0y n\u1ED5i b\u1EADt"
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { className: "" },
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-4 item-product-border p-t-8 p-b-8" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "item-product" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "#", className: "item_link-img" },
+                                    _react2.default.createElement("img", { src: "assets/images/citizen-1.jpg", className: "img-responsive" })
+                                ),
+                                _react2.default.createElement(
+                                    "a",
+                                    { className: "item_link-text", href: "#" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "bold" },
+                                        "Citizen"
+                                    ),
+                                    " dolor sit amet, consectetur adipiscing elit."
+                                ),
+                                _react2.default.createElement(
+                                    "h4",
+                                    { className: "price m-t-8" },
+                                    "$74.49 ",
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "red" },
+                                        "Save 48%"
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-4 item-product-border p-t-8 p-b-8" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "item-product" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "#", className: "item_link-img" },
+                                    _react2.default.createElement("img", { src: "assets/images/citizen-2.jpg", className: "img-responsive" })
+                                ),
+                                _react2.default.createElement(
+                                    "a",
+                                    { className: "item_link-text", href: "#" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "bold" },
+                                        "Citizen"
+                                    ),
+                                    " dolor sit amet, consectetur adipiscing elit."
+                                ),
+                                _react2.default.createElement(
+                                    "h4",
+                                    { className: "price m-t-8" },
+                                    "$74.49 ",
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "red" },
+                                        "Save 48%"
+                                    )
+                                )
+                            )
+                        ),
+                        _react2.default.createElement(
+                            "div",
+                            { className: "col-sm-4 item-product-border p-t-8 p-b-8" },
+                            _react2.default.createElement(
+                                "div",
+                                { className: "item-product" },
+                                _react2.default.createElement(
+                                    "a",
+                                    { href: "#", className: "item_link-img" },
+                                    _react2.default.createElement("img", { src: "assets/images/citizen-3.jpg", className: "img-responsive" })
+                                ),
+                                _react2.default.createElement(
+                                    "a",
+                                    { className: "item_link-text", href: "#" },
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "bold" },
+                                        "Citizen"
+                                    ),
+                                    " dolor sit amet, consectetur adipiscing elit."
+                                ),
+                                _react2.default.createElement(
+                                    "h4",
+                                    { className: "price m-t-8" },
+                                    "$74.49 ",
+                                    _react2.default.createElement(
+                                        "span",
+                                        { className: "red" },
+                                        "Save 48%"
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return DailyDeals;
+}(_react.Component);
+
+exports.default = DailyDeals;

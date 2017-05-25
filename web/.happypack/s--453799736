@@ -1,0 +1,211 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactRouter = require('react-router');
+
+var _universalCookie = require('universal-cookie');
+
+var _universalCookie2 = _interopRequireDefault(_universalCookie);
+
+var _LinkUI = require('./LinkUI');
+
+var _LinkUI2 = _interopRequireDefault(_LinkUI);
+
+var _homeReducers = require('../../reducers/homeReducers');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Header = function (_Component) {
+    _inherits(Header, _Component);
+
+    function Header(props) {
+        _classCallCheck(this, Header);
+
+        var _this = _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).call(this, props));
+
+        _this.handleClickLogout = _this.handleClickLogout.bind(_this);
+        return _this;
+    }
+
+    _createClass(Header, [{
+        key: 'handleClickLogout',
+        value: function handleClickLogout(e) {
+            e.preventDefault();
+            var cookies = new _universalCookie2.default();
+            //      var idUserLogin = cookies.get('user');
+            //      cookies.remove("user");
+            cookies.remove('user', { path: '/' });
+            location.reload();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var userLogin = this.props.userLogin ? this.props.userLogin : {};
+            var order = this.props.order;
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    { className: 'header-top' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'container' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'row' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'pull-left col-xs-6 col-sm-6 header_top_left' },
+                                _react2.default.createElement(
+                                    'p',
+                                    { className: 'text-white' },
+                                    'Call us (84) 964 376134'
+                                )
+                            ),
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'col-xs-6 col-sm-6 pull-right header_top_right' },
+                                _react2.default.createElement(
+                                    'ul',
+                                    { className: 'header_menu header_user' },
+                                    _react2.default.createElement(
+                                        'li',
+                                        { className: 'header_menu_primary header_menu_item' },
+                                        _react2.default.createElement(
+                                            'a',
+                                            { href: 'javascript:void(0)', className: 'primary' },
+                                            _react2.default.createElement('span', { className: 'header_top_icon icon icon-account' }),
+                                            _react2.default.createElement(
+                                                'span',
+                                                { className: 'hidden-xs' },
+                                                typeof userLogin.id !== 'undefined' ? userLogin.username : 'My account'
+                                            )
+                                        ),
+                                        typeof userLogin.id === 'undefined' ? _react2.default.createElement(
+                                            'ul',
+                                            { className: 'header_menu_multi hidden' },
+                                            _react2.default.createElement(
+                                                'li',
+                                                { className: 'header_menu_item' },
+                                                _react2.default.createElement(
+                                                    _reactRouter.Link,
+                                                    { to: 'login' },
+                                                    '\u0110\u0103ng nh\u1EADp'
+                                                )
+                                            ),
+                                            _react2.default.createElement(
+                                                'li',
+                                                { className: 'header_menu_item' },
+                                                _react2.default.createElement(
+                                                    'a',
+                                                    { href: '#' },
+                                                    '\u0110\u0103ng k\xFD'
+                                                )
+                                            )
+                                        ) : _react2.default.createElement(
+                                            'ul',
+                                            { className: 'header_menu_multi hidden' },
+                                            _react2.default.createElement(
+                                                'li',
+                                                { className: 'header_menu_item' },
+                                                _react2.default.createElement(
+                                                    'a',
+                                                    { onClick: this.handleClickLogout, href: '#' },
+                                                    '\u0110\u0103ng xu\u1EA5t'
+                                                )
+                                            )
+                                        )
+                                    )
+                                ),
+                                _react2.default.createElement(
+                                    'ul',
+                                    { className: 'header_menu header_bag' },
+                                    _react2.default.createElement(
+                                        'li',
+                                        { className: 'header_menu_primary header_menu_item' },
+                                        _react2.default.createElement(
+                                            'a',
+                                            { href: '#', className: '' },
+                                            _react2.default.createElement(
+                                                'span',
+                                                { className: 'hidden-xs' },
+                                                'My shopping bag'
+                                            ),
+                                            '(',
+                                            order.length,
+                                            ')',
+                                            _react2.default.createElement('span', { className: 'header_top_icon icon icon-shopping-cart' })
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'header',
+                    { className: 'header container' },
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'row' },
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-sm-6 brand' },
+                            _react2.default.createElement(
+                                _reactRouter.Link,
+                                { to: '/', className: '' },
+                                'We Watch'
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'col-sm-6 pull-right' },
+                            _react2.default.createElement(
+                                'div',
+                                { className: 'header_search pull-right' },
+                                _react2.default.createElement(
+                                    'form',
+                                    { action: 'SearchForm' },
+                                    _react2.default.createElement('input', { className: 'header_search_input input input-default', type: 'text', placeholder: 'search brand or model' }),
+                                    _react2.default.createElement(
+                                        'button',
+                                        { className: 'header_search_btn btn btn-search' },
+                                        _react2.default.createElement('span', { className: 'icon icon-search' })
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Header;
+}(_react.Component);
+
+;
+function mapStateToProps(state) {
+    return {
+        order: (0, _homeReducers.getOrder)(state)
+    };
+}
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);

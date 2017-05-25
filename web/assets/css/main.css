@@ -1,0 +1,899 @@
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek*/
+
+@font-face{
+  font-family: text;
+  src: url("../fonts/text.ttf");
+  src: url("../fonts/text.woff"); }
+@font-face {
+  font-family: Batik_Alin;
+  src: url("../fonts/Batik_Alin.ttf"); }
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: text;
+  font-size: 14px; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto; }
+
+.container-fluid {
+  width: 100%; }
+
+.container,
+.container-fluid {
+  padding-left: 8px;
+  padding-right: 8px; }
+  @media (min-width: 768px) {
+    .container,
+    .container-fluid {
+      padding-left: 16px;
+      padding-right: 16px; } }
+
+.row {
+  min-height: 1px;
+  margin-left: -8px;
+  margin-right: -8px; }
+  @media (min-width: 768px) {
+    .row {
+      margin-left: -16px;
+      margin-right: -16px; } }
+  .row::after {
+    content: '';
+    display: table;
+    clear: both; }
+
+[class*="col-"] {
+  float: none;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px; }
+  @media (min-width: 768px) {
+    [class*="col-"] {
+      padding-left: 16px;
+      padding-right: 16px; } }
+
+.col-xs-1 {
+  float: left;
+  width: 8.33333%; }
+
+.col-xs-2 {
+  float: left;
+  width: 16.66667%; }
+
+.col-xs-3 {
+  float: left;
+  width: 25%; }
+
+.col-xs-4 {
+  float: left;
+  width: 33.33333%; }
+
+.col-xs-5 {
+  float: left;
+  width: 41.66667%; }
+
+.col-xs-6 {
+  float: left;
+  width: 50%; }
+
+.col-xs-7 {
+  float: left;
+  width: 58.33333%; }
+
+.col-xs-8 {
+  float: left;
+  width: 66.66667%; }
+
+.col-xs-9 {
+  float: left;
+  width: 75%; }
+
+.col-xs-10 {
+  float: left;
+  width: 83.33333%; }
+
+.col-xs-11 {
+  float: left;
+  width: 91.66667%; }
+
+.col-xs-12 {
+  float: left;
+  width: 100%; }
+
+@media (min-width: 768px) {
+  .col-sm-1 {
+    float: left;
+    width: 8.33333%; }
+
+  .col-sm-2 {
+    float: left;
+    width: 16.66667%; }
+
+  .col-sm-3 {
+    float: left;
+    width: 25%; }
+
+  .col-sm-4 {
+    float: left;
+    width: 33.33333%; }
+
+  .col-sm-5 {
+    float: left;
+    width: 41.66667%; }
+
+  .col-sm-6 {
+    float: left;
+    width: 50%; }
+
+  .col-sm-7 {
+    float: left;
+    width: 58.33333%; }
+
+  .col-sm-8 {
+    float: left;
+    width: 66.66667%; }
+
+  .col-sm-9 {
+    float: left;
+    width: 75%; }
+
+  .col-sm-10 {
+    float: left;
+    width: 83.33333%; }
+
+  .col-sm-11 {
+    float: left;
+    width: 91.66667%; }
+
+  .col-sm-12 {
+    float: left;
+    width: 100%; } }
+@media (min-width: 992px) {
+  .col-md-1 {
+    float: left;
+    width: 8.33333%; }
+
+  .col-md-2 {
+    float: left;
+    width: 16.66667%; }
+
+  .col-md-3 {
+    float: left;
+    width: 25%; }
+
+  .col-md-4 {
+    float: left;
+    width: 33.33333%; }
+
+  .col-md-5 {
+    float: left;
+    width: 41.66667%; }
+
+  .col-md-6 {
+    float: left;
+    width: 50%; }
+
+  .col-md-7 {
+    float: left;
+    width: 58.33333%; }
+
+  .col-md-8 {
+    float: left;
+    width: 66.66667%; }
+
+  .col-md-9 {
+    float: left;
+    width: 75%; }
+
+  .col-md-10 {
+    float: left;
+    width: 83.33333%; }
+
+  .col-md-11 {
+    float: left;
+    width: 91.66667%; }
+
+  .col-md-12 {
+    float: left;
+    width: 100%; } }
+@media (min-width: 1200px) {
+  .col-lg-1 {
+    float: left;
+    width: 8.33333%; }
+
+  .col-lg-2 {
+    float: left;
+    width: 16.66667%; }
+
+  .col-lg-3 {
+    float: left;
+    width: 25%; }
+
+  .col-lg-4 {
+    float: left;
+    width: 33.33333%; }
+
+  .col-lg-5 {
+    float: left;
+    width: 41.66667%; }
+
+  .col-lg-6 {
+    float: left;
+    width: 50%; }
+
+  .col-lg-7 {
+    float: left;
+    width: 58.33333%; }
+
+  .col-lg-8 {
+    float: left;
+    width: 66.66667%; }
+
+  .col-lg-9 {
+    float: left;
+    width: 75%; }
+
+  .col-lg-10 {
+    float: left;
+    width: 83.33333%; }
+
+  .col-lg-11 {
+    float: left;
+    width: 91.66667%; }
+
+  .col-lg-12 {
+    float: left;
+    width: 100%; } }
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek
+*/
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek
+*/
+@font-face {
+  font-family: text;
+  src: url("../fonts/text.ttf");
+  src: url("../fonts/text.woff"); }
+@font-face {
+  font-family: Batik_Alin;
+  src: url("../fonts/Batik_Alin.ttf"); }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: text;
+  font-size: 14px; }
+
+body {
+  background-color: #ffffff;
+  min-width: 320px; }
+
+.table {
+  display: table; }
+
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
+
+.hidden,
+.hidden-xs,
+.hidden-sm {
+  display: none; }
+
+@media (min-width: 768px) {
+  .hidden-xs {
+    display: block; } }
+@media (min-width: 992px) {
+  .hidden-sm {
+    display: block; } }
+.img-responsive {
+  max-width: 100%; }
+
+.padding {
+  padding-left: 8px;
+  padding-right: 8px; }
+  @media (min-width: 768px) {
+    .padding {
+      padding-left: 16px;
+      padding-right: 16px; } }
+
+.padding-top-bottom {
+  padding-top: 8px;
+  padding-bottom: 8px; }
+  @media (min-width: 768px) {
+    .padding-top-bottom {
+      padding-top: 16px;
+      padding-bottom: 16px; } }
+
+.link-ui {
+  padding: 4px 0;
+  text-decoration: none !important;
+  position: relative; }
+  .link-ui::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #1e8c82;
+    opacity: .4;
+    transition: all 250ms ease;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+    transform: scale(0, 1);
+    -webkit-transform: scale(0, 1);
+    -moz-transform: scale(0, 1); }
+  .link-ui:hover {
+    text-decoration: none !important; }
+    .link-ui:hover::after {
+      transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      -moz-transform: scale(1, 1);
+      opacity: 1; }
+
+.hr-clear {
+  clear: both;
+  height: 1px;
+  border: 0;
+  display: block;
+  margin: 8px 0; }
+
+button {
+  cursor: pointer; }
+
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.7em; }
+
+h3 {
+  font-size: 1.5em; }
+
+h4 {
+  font-size: 1.2em; }
+
+h5 {
+  font-size: 1em; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:58:24 PM
+    Author     : wladek
+*/
+.icon {
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px; }
+
+.icon-account {
+  background-image: url("../icons/ic_account_circle.svg"); }
+
+.icon-shopping-cart {
+  background-image: url("../icons/ic_shopping_cart.svg"); }
+
+.icon-search {
+  background-image: url("../icons/ic_search.svg"); }
+
+.icon-arrow-left {
+  background-image: url("../icons/ic_arrow_left.svg"); }
+
+.icon-arrow-right {
+  background-image: url("../icons/ic_arrow_right.svg"); }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:03:08 PM
+    Author     : wladek
+*/
+.header-top {
+  background-color: #080808;
+  z-index: 99; }
+
+.text-white {
+  color: #ffffff; }
+
+.header_menu {
+  z-index: 99;
+  display: inline-block; }
+
+.header_top_left p {
+  line-height: 30px; }
+
+.header_top_right {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end; }
+
+.header_menu_item {
+  display: flex;
+  display: -webkit-flex;
+  align-items: center;
+  -webkit-align-items: center; }
+  .header_menu_item a {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    color: #ffffff;
+    text-decoration: none;
+    padding-left: 8px;
+    padding-right: 8px; }
+
+.header_menu_multi {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  min-width: 150px;
+  background: #1e8c82;
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  box-shadow: rgba(0, 0, 0, 0.11765) 0px 1px 6px, rgba(0, 0, 0, 0.11765) 0px 1px 4px; }
+  .header_menu_multi a {
+    width: 100%;
+    justify-content: center;
+    -webkit-justify-content: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    position: relative; }
+    .header_menu_multi a:hover::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 8, 8, 0.1); }
+
+.header_menu_primary {
+  position: relative; }
+  .header_menu_primary:hover.header_menu_item {
+    background: #1e8c82; }
+  .header_menu_primary:hover .header_menu_multi {
+    display: block; }
+
+.header_top_icon {
+  display: inline-block; }
+
+.header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  z-index: 98; }
+
+.brand {
+  text-align: center; }
+  @media (min-width: 768px) {
+    .brand {
+      text-align: left; } }
+  .brand a {
+    font-family: Batik_Alin;
+    font-size: 4em;
+    color: #080808; }
+
+.header_search {
+  position: relative;
+  width: 100%; }
+
+.input, .btn {
+  outline: none;
+  border: none; }
+
+.input-default {
+  min-width: 250px;
+  height: 36px;
+  padding: 0 8px;
+  border-right: 2px;
+  border: 1px solid #0C1E2E; }
+
+.header_search_input {
+  min-width: 100%;
+  width: 100%;
+  padding-right: 40px; }
+  @media (min-width: 768px) {
+    .header_search_input {
+      width: 260px;
+      min-width: inherit;
+      float: right; } }
+
+.header_search_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36px;
+  height: 36px;
+  background: #0C1E2E; }
+  .header_search_btn span {
+    display: block;
+    margin: auto; }
+
+.nav_menu {
+  width: 100%;
+  position: relative; }
+
+.nav_menu_item {
+  display: inline-block; }
+  .nav_menu_item a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: #080808;
+    font-size: 1.1em;
+    position: relative; }
+    .nav_menu_item a .line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #e22222;
+      visibility: hidden;
+      display: block;
+      transform: scale(0);
+      -webkit-transform: scale(0);
+      -moz-transform: scale(0);
+      transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+      -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+      -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+      -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .nav_menu_item:hover a > .line {
+    visibility: visible;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1); }
+  .nav_menu_item:hover .nav_sub {
+    display: block; }
+
+.nav_sub {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(100%);
+  -webkit-transform: translateY(100%);
+  -moz-transform: translateY(100%);
+  display: none; }
+
+.home-slider {
+  position: relative; }
+
+.slide_item {
+  position: relative;
+  display: none; }
+
+.slide_item_wrap {
+  /*display: none;*/
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 246px;
+  width: 100%; }
+  @media (min-width: 768px) {
+    .slide_item_wrap {
+      height: 327px; } }
+  @media (min-width: 992px) {
+    .slide_item_wrap {
+      height: 400px; } }
+
+.slide_item_link-primary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
+.slide_item-fixed {
+  position: absolute;
+  top: 0;
+  left: 60px;
+  width: 150px;
+  padding: 16px 0;
+  background: rgba(8, 8, 8, 0.5);
+  user-slect: none;
+  -webkit-user-slect: none;
+  -moz-user-slect: none;
+  -ms-user-slect: none; }
+  @media (min-width: 768px) {
+    .slide_item-fixed {
+      left: 80px; } }
+  .slide_item-fixed .title {
+    padding: 16px 0 16px 16px;
+    color: #ffffff; }
+  .slide_item-fixed a {
+    display: block;
+    padding: 4px 16px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none; }
+    .slide_item-fixed a:hover {
+      color: #ffffff; }
+
+.slide_btn {
+  position: absolute;
+  width: 40px;
+  height: 40px; }
+  .slide_btn .icon {
+    display: block;
+    margin: auto; }
+
+.slide_btn-prev {
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(8, 8, 8, 0.1); }
+  .slide_btn-prev:hover {
+    background: rgba(8, 8, 8, 0.88); }
+
+.slide_btn-next {
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  background: rgba(8, 8, 8, 0.1); }
+  .slide_btn-next:hover {
+    background: rgba(8, 8, 8, 0.88); }
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s; }
+
+@-webkit-keyframes fade {
+  from {
+    opacity: .4; }
+  to {
+    opacity: 1; } }
+@keyframes fade {
+  from {
+    opacity: .4; }
+  to {
+    opacity: 1; } }
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 2, 2017, 10:21:00 AM
+    Author     : wladek
+*/
+.lists-product {
+  border: 1px solid #ececec;
+  clear: both;
+  padding: 8px;
+  position: relative; }
+
+.slider-wrap {
+  overflow: hidden;
+  height: 380px; }
+
+.sliders {
+  height: 380px;
+  overflow: hidden;
+  transition: all 450ms linear;
+  -webkit-transition: all 450ms linear;
+  -moz-transition: all 450ms linear;
+  -ms-transition: all 450ms linear;
+  -o-transition: all 450ms linear; }
+
+.slider {
+  float: left;
+  width: 300px;
+  height: 380px; }
+
+.slider_btn {
+  position: absolute;
+  top: 170px;
+  width: 40px;
+  height: 40px;
+  background: rgba(8, 8, 8, 0.6);
+  z-index: 3;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; }
+  .slider_btn:hover {
+    background: #080808;
+    border-radius: 50%;
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg); }
+  .slider_btn .icon {
+    display: block;
+    margin: auto; }
+
+.slider_btn-next {
+  right: 8px; }
+
+.slider_btn-prev {
+  left: 8px; }
+
+.slider_link:hover .slider_img {
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1); }
+
+.slider_link .img-wrap {
+  height: 260px; }
+
+.slider_img {
+  max-height: 260px;
+  display: block;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  transform: scale(0.9);
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  -o-transform: scale(0.9); }
+
+.slider_link_text {
+  padding-left: 1em; }
+
+.slider-col-detail {
+  width: 80px;
+  margin-top: 15px; }
+
+.slider-col {
+  height: 200px;
+  position: relative; }
+
+.slider-col .slider_btn {
+  width: 30px;
+  height: 30px;
+  left: 25px;
+  background-color: transparent; }
+
+.slider-col .slider_btn-up {
+  top: -30px; }
+
+.slider-col .slider_btn-down {
+  top: auto;
+  bottom: -40px; }
+
+.slider-col_wrap {
+  height: 100%;
+  overflow: hidden; }
+
+.slider-col_sliders {
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  -o-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms; }
+
+.slider-detail_img {
+  padding: 4px;
+  border: 1px solid rgba(8, 8, 8, 0.1); }
+
+.slider-detail_img img {
+  cursor: pointer; }
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 2, 2017, 2:19:43 PM
+    Author     : wladek
+*/
+.m-t-8 {
+  margin-top: 8px; }
+
+.p-b-8 {
+  padding-bottom: 8px; }
+
+.p-t-8 {
+  padding-top: 8px; }
+
+.pos-relate {
+  position: relative;
+  display: block; }
+
+.btn-go-shop {
+  padding: 8px 16px;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border-radius: 2px;
+  background: transparent;
+  border: 1px solid #1e8c82;
+  transition: background 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: background 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: background 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  -ms-transition: background 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  /*@include transform(translateX(-50%));*/ }
+  .btn-go-shop:hover {
+    color: #ffffff;
+    background: #1e8c82; }
+
+.item-product-border {
+  border: 1px solid transparent;
+  transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1);
+  -ms-transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .item-product-border:hover {
+    box-shadow: rgba(0, 0, 0, 0.11765) 0px 1px 6px, rgba(0, 0, 0, 0.11765) 0px 1px 4px;
+    border-color: rgba(8, 8, 8, 0.2); }
+
+.item_link-img {
+  display: block;
+  margin-bottom: 8px; }
+
+.item_link-text {
+  text-decoration: none;
+  color: rgba(8, 8, 8, 0.89); }
+  .item_link-text:hover {
+    text-decoration: underline;
+    color: #080808; }
+
+.price {
+  text-transform: uppercase;
+  font-style: italic; }
+  .price span.red {
+    font-style: normal;
+    color: red;
+    margin-left: 8px; }
+
+/*# sourceMappingURL=main.css.map */

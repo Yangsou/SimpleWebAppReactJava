@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 27, 2017, 10:58:24 PM
+    Author     : wladek
+*/
+.icon{
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+}
+
+.icon-account{
+    background-image: url("../icons/ic_account_circle_white_24dp_1x.png");
+}
+
+.icon-shopping-cart{
+    background-image: url('../icons/ic_shopping_cart.svg');
+}
+
+.icon-search{
+    background-image: url('../icons/ic_search.svg');
+}
+
+.icon-arrow-left{
+    background-image: url('../icons/ic_arrow_left.svg');
+}
+.icon-arrow-right{
+    background-image: url('../icons/ic_arrow_right.svg');
+}
