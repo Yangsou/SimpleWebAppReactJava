@@ -4,54 +4,58 @@ import {Link, IndexLink} from 'react-router';
 var actions = require('../../action/navActions');
 var {getIsShowNav} = require('../../reducers/navReducers');
 
+import {
+    fetchTypeWatches,
+    getWatchByType
+} from '../../action/homeActions';
+
 class Navigation extends Component{
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
     this.state = {
-      isShowNav: false
+      category: []
     };
   };
-  handleClick() {
-    if(!this.state.isShowNav) {
-      document.addEventListener('click', this.handleOutsideClick, false);
-    } else {
-      document.removeEventListener('click', this.handleOutsideClick, false);
-    }
-    this.setState({
-      isShowNav: !this.state.isShowNav
-    });
-    // var {dispatch} = this.props;
-    // dispatch(actions.toggleShowNav());
+  handleClick(id) {
+    this.props.dispatch(getWatchByType(id));
   };
-  handleOutsideClick(e){
-    this.handleClick();
+  initCategory(){
+        return fetchTypeWatches().then(res => {
+            // return res;
+            this.setState({category: res});
+        });
   };
+  componentWillMount(){
+      this.initCategory();
+  }
+  
   render(){
-    var navXsCln = this.state.isShowNav ? ' xs-active' : '';
+    var category = this.state.category;
     // var navXsCln = this.props.isShowNav ? ' xs-active' : '';
     return(
             <div className="nav container">
             <ul className="nav_menu">
                 <li className="nav_menu_item">
-                    <a href="#">Shop by brand<span className="line"></span></a>
-                    <div className="nav_sub row">
-                        <div className="col-sm-8 col-md-9">
-                            content
-                        </div>
-                        <div className="col-sm-4 col-md-3">
-                            imgage
-                        </div>
+                    <Link to="/">Home<span className="line"></span></Link>
+                </li>
+                <li className="nav_menu_item">
+                    <Link to="/">Watches<span className="line"></span></Link>
+                    <div className="nav_sub">
+                        {
+                            category.length > 0 ? (
+                                    <div className="">
+                                        {
+                                        category.map((item, index) => (
+                                                <Link onClick={ () => {this.handleClick(item.id)} }
+                                                    to={`category/${item.id}`}>{item.name}</Link>
+                                                ))
+                                        
+                                        }
+                                    </div>
+                                ) : ''
+                        }
                     </div>
-                </li>
-                <li className="nav_menu_item">
-                    <a href="#">Shop by brand<span className="line"></span></a>
-                    
-                </li>
-                <li className="nav_menu_item">
-                    <a href="#">Shop by brand<span className="line"></span></a>
-                    
                 </li>
             </ul>
         </div>

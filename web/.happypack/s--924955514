@@ -60,7 +60,6 @@ var Watch = function (_Component) {
             var _this2 = this;
 
             return (0, _homeActions.getWatchesById)(id).then(function (res) {
-                console.log(res);
                 _this2.setState({ watch: res });
             });
         }
@@ -102,8 +101,8 @@ var Watch = function (_Component) {
         value: function render() {
             var _this3 = this;
 
-            console.log('order', this.props.order);
-            console.log('id', this.props.params.cuid);
+            //        console.log('order', this.props.order);
+            //        console.log('id', this.props.params.cuid);
             var watch = this.state.watch;
             return _react2.default.createElement(
                 'div',

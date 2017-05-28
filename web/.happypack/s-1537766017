@@ -76,7 +76,7 @@ var App = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log('user', this.props.user.id);
+      //        console.log('user', this.props.user.id);
       return _react2.default.createElement(
         'div',
         null,

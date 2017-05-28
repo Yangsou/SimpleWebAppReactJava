@@ -28,7 +28,7 @@ class App extends Component {
 
   }
     render(){
-        console.log('user', this.props.user.id);
+//        console.log('user', this.props.user.id);
         return(
           <div>
               <Header userLogin={this.props.user}/>

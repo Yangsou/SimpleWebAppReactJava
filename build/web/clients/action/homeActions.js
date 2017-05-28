@@ -93,6 +93,33 @@ export function getWatchesById(id){
     return $.get("api", {count: 'get_watches_by_id', id: id}, res => res);
 }
 
+export function addWatchSearch(watch){
+    return {
+        type: 'ADD_WATCH_SEARCH',
+        watch
+    };
+}
+export function getWatchesByName(name){
+    return function (dispatch){
+        $.get("api", {count: 'get_watches_by_name', name: name}, res => {
+            return dispatch(addWatchSearch(res));
+        });
+    };
+}
+export function addWatchType(watch){
+    return{
+        type: 'ADD_WATCH_TYPE',
+        watch
+    };
+}
+export function getWatchByType(id){
+    return function (dispatch){
+        return $.get("api", {count: 'get_watches_by_id_type', id: id}, res => {
+            return dispatch(addWatchType(res));
+        });
+    };
+}
+
 export function addUser(user){
     return{
         type: actionTypes.CHECK_USER_LOGIN,

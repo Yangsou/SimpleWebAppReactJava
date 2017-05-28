@@ -7,6 +7,8 @@ import Post from './modules/article/page/Article';
 import About from './modules/pages/About';
 import Watch from './modules/Watch/page/Watch';
 import Login from './modules/Login/page/Login';
+import Search from './modules/Search/page/Search';
+import Category from './modules/Category/page/Category';
 
 class Routes extends Component{
   render(){
@@ -57,6 +59,22 @@ class Routes extends Component{
               getComponent={(location, callback) => {
                 require.ensure([], function (require) {
                   callback(null, require('./modules/Login/page/Login').default);
+                });
+              }}
+            />
+            <Route
+              path="search/:cuid"
+              getComponent={(location, callback) => {
+                require.ensure([], function (require) {
+                  callback(null, require('./modules/Search/page/Search').default);
+                });
+              }}
+            />
+            <Route
+              path="category/:cuid"
+              getComponent={(location, callback) => {
+                require.ensure([], function (require) {
+                  callback(null, require('./modules/Category/page/Category').default);
                 });
               }}
             />

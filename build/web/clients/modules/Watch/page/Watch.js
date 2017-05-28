@@ -31,7 +31,6 @@ class Watch extends Component{
     }
     initProduct(id){
         return getWatchesById(id).then(res => {
-            console.log(res);
             this.setState({watch: res});
             
         });
@@ -66,8 +65,8 @@ class Watch extends Component{
 
     }
     render(){
-        console.log('order', this.props.order);
-        console.log('id', this.props.params.cuid);
+//        console.log('order', this.props.order);
+//        console.log('id', this.props.params.cuid);
         var watch = this.state.watch;
         return(
             <div className="container">

@@ -12,7 +12,9 @@ var initialState = {
   data: [],
   watches: [],
   user: {},
-  order: []
+  order: [],
+  watchSearch: [],
+  watchType: []
 };
 
 var homeReducers = function homeReducers() {
@@ -38,6 +40,12 @@ var homeReducers = function homeReducers() {
     case 'CHECK_USER_LOGIN':
       state.user = action.user;
       return _extends({}, state);
+    case 'ADD_WATCH_SEARCH':
+      state.watchSearch = action.watch;
+      return _extends({}, state);
+    case 'ADD_WATCH_TYPE':
+      state.watchType = action.watch;
+      return _extends({}, state);
     default:
       return state;
   };
@@ -54,6 +62,12 @@ var getUser = exports.getUser = function getUser(state) {
 };
 var getOrder = exports.getOrder = function getOrder(state) {
   return state.home.order;
+};
+var getWatchSearch = exports.getWatchSearch = function getWatchSearch(state) {
+  return state.home.watchSearch;
+};
+var getWatchType = exports.getWatchType = function getWatchType(state) {
+  return state.home.watchType;
 };
 
 exports.default = homeReducers;

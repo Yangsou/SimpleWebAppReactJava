@@ -145,14 +145,16 @@ and open the template in the editor.
 .nav_menu{
     width: 100%;
     position: relative;
+    margin-bottom: 8px;
 }
 .nav_menu_item{
     display: inline-block;
+    position: relative;
     a{
         display: block;
         padding: 8px;
         text-decoration: none;
-        color: $color-black;
+        color: rgba($color-black, .79);
         font-size: 1.1em;
         position: relative;
         .line{
@@ -169,10 +171,14 @@ and open the template in the editor.
         }
     }
     &:hover{
-        a > .line{
-            visibility: visible;
-            @include transform(scale(1));
+        a {
+            color: $color-black;
+            .line{
+                visibility: visible;
+                @include transform(scale(1));
+            }
         }
+        
         .nav_sub{
             display: block;
         }
@@ -183,9 +189,15 @@ and open the template in the editor.
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 200px;
     @include transform(translateY(100%));
     display: none;
+    z-index: 9;
+    background: $color-white;
+    box-shadow: $shadow;
+    a:hover{
+        background: $color-silver;
+    }
 }
 
 .home-slider{
@@ -293,4 +305,24 @@ and open the template in the editor.
 @keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
+}
+
+
+.title{
+    padding: 8px 15px;
+    position: relative;
+    margin-bottom: 15px;
+    background: rgba($color-silver, .49);
+    span{
+        font-size: 100%;
+    }
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 5px;
+        background: $color-red;
+    }
 }

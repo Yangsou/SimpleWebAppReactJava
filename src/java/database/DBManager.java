@@ -86,6 +86,22 @@ public class DBManager {
         return rs;
     }
     
+    public ResultSet getWatchesByName(String name){
+        ResultSet rs = null;
+        Statement st;
+        try {
+            st = con.createStatement();
+            String query = "SELECT * FROM chitietsanpham WHERE name like ?";
+            PreparedStatement preSta = con.prepareStatement(query);
+            name = "%" + name + "%";
+            preSta.setString(1, name);
+            rs = preSta.executeQuery();
+            
+        } catch (Exception e) {
+        }
+        return rs;
+    }
+    
     public ResultSet getUserById(String id){
         ResultSet rs = null;
         Statement st;

@@ -15,6 +15,10 @@ exports.fetchTypeWatches = fetchTypeWatches;
 exports.fetchWatchesByIdType = fetchWatchesByIdType;
 exports.fetchWatchesSale = fetchWatchesSale;
 exports.getWatchesById = getWatchesById;
+exports.addWatchSearch = addWatchSearch;
+exports.getWatchesByName = getWatchesByName;
+exports.addWatchType = addWatchType;
+exports.getWatchByType = getWatchByType;
 exports.addUser = addUser;
 exports.checkUserLogin = checkUserLogin;
 exports.fetchUser = fetchUser;
@@ -126,6 +130,33 @@ function getWatchesById(id) {
     return _jquery2.default.get("api", { count: 'get_watches_by_id', id: id }, function (res) {
         return res;
     });
+}
+
+function addWatchSearch(watch) {
+    return {
+        type: 'ADD_WATCH_SEARCH',
+        watch: watch
+    };
+}
+function getWatchesByName(name) {
+    return function (dispatch) {
+        _jquery2.default.get("api", { count: 'get_watches_by_name', name: name }, function (res) {
+            return dispatch(addWatchSearch(res));
+        });
+    };
+}
+function addWatchType(watch) {
+    return {
+        type: 'ADD_WATCH_TYPE',
+        watch: watch
+    };
+}
+function getWatchByType(id) {
+    return function (dispatch) {
+        return _jquery2.default.get("api", { count: 'get_watches_by_id_type', id: id }, function (res) {
+            return dispatch(addWatchType(res));
+        });
+    };
 }
 
 function addUser(user) {

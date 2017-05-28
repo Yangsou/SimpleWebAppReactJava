@@ -1,0 +1,42 @@
+SyntaxError: Unexpected token, expected : (34:127)
+
+[0m [90m 32 | [39m        [36mreturn[39m(
+ [90m 33 | [39m                [33m<[39m[33mdiv[39m className[33m=[39m[32m"container"[39m[33m>[39m
+[31m[1m>[22m[39m[90m 34 | [39m                    [33m<[39m[33mh1[39m className[33m=[39m[32m"title"[39m[33m>[39m[33mKết[39m quả tìm kiếm {[36mthis[39m[33m.[39mprops[33m.[39mparams[33m.[39mcuid} ({listProduct [33m>[39m [35m0[39m [33m?[39m listProduct[33m.[39mlength [33m?[39m [32m''[39m})[33m<[39m[33m/[39m[33mh1[39m[33m>[39m
+ [90m    | [39m                                                                                                                               [31m[1m^[22m[39m
+ [90m 35 | [39m                    [33m<[39m[33mdiv[39m[33m>[39m
+ [90m 36 | [39m                        {
+ [90m 37 | [39m                            listProduct[33m.[39mlength [33m>[39m [35m0[39m [33m?[39m listProduct[33m.[39mmap((item[33m,[39m index) [33m=>[39m {[0m
+
+BabelLoaderError: SyntaxError: Unexpected token, expected : (34:127)
+
+[0m [90m 32 | [39m        [36mreturn[39m(
+ [90m 33 | [39m                [33m<[39m[33mdiv[39m className[33m=[39m[32m"container"[39m[33m>[39m
+[31m[1m>[22m[39m[90m 34 | [39m                    [33m<[39m[33mh1[39m className[33m=[39m[32m"title"[39m[33m>[39m[33mKết[39m quả tìm kiếm {[36mthis[39m[33m.[39mprops[33m.[39mparams[33m.[39mcuid} ({listProduct [33m>[39m [35m0[39m [33m?[39m listProduct[33m.[39mlength [33m?[39m [32m''[39m})[33m<[39m[33m/[39m[33mh1[39m[33m>[39m
+ [90m    | [39m                                                                                                                               [31m[1m^[22m[39m
+ [90m 35 | [39m                    [33m<[39m[33mdiv[39m[33m>[39m
+ [90m 36 | [39m                        {
+ [90m 37 | [39m                            listProduct[33m.[39mlength [33m>[39m [35m0[39m [33m?[39m listProduct[33m.[39mmap((item[33m,[39m index) [33m=>[39m {[0m
+
+    at transpile (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/babel-loader/lib/index.js:61:13)
+    at Object.module.exports (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/babel-loader/lib/index.js:163:20)
+    at applySyncOrAsync (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:341:21)
+    at apply (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:268:5)
+    at /home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:131:7
+    at applyPitchLoader (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:184:14)
+    at applyPitchLoader (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:192:14)
+    at applyPitchLoaders (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:222:4)
+    at applyLoaders (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/applyLoaders.js:116:3)
+    at HappyWorker.compile (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/HappyWorker.js:32:3)
+    at Object.compile (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/HappyForegroundThreadPool.js:61:14)
+    at HappyPlugin.compileAndUpdateCache (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/HappyPlugin.js:344:14)
+    at HappyPlugin.compileInForeground (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/HappyPlugin.js:321:25)
+    at HappyPlugin.compile (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/HappyPlugin.js:237:32)
+    at Object.HappyLoader (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/happypack/lib/HappyLoader.js:42:15)
+    at WEBPACK_CORE_LOADER_EXECUTION (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/webpack-core/lib/NormalModuleMixin.js:155:71)
+    at runSyncOrAsync (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/webpack-core/lib/NormalModuleMixin.js:155:93)
+    at nextLoader (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/webpack-core/lib/NormalModuleMixin.js:290:3)
+    at /home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/webpack-core/lib/NormalModuleMixin.js:259:5
+    at Storage.finished (/home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:38:16)
+    at /home/wladek/NetBeansProjects/SimpleWebApp/web/node_modules/graceful-fs/graceful-fs.js:78:16
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:445:3)

@@ -116,7 +116,55 @@ public class api extends HttpServlet {
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(json);
         }
-        
+        if(request.getParameter("count").toString().equals("get_watches_by_name")){
+                String name = request.getParameter("name").toString();
+                ArrayList<Object> listProductByIdType = new ArrayList<>();
+                Product productObject = new Product();
+
+                DBManager DB = new DBManager();
+                DB.DBManager();
+                ResultSet rs = DB.getWatchesByName(name);
+                System.out.printf("search %s", name);
+                try {
+                    while(rs.next()){
+                        String nameRs = rs.getString("Name");
+                        String id = rs.getString("IDProduct");
+                        String idType = rs.getString("IDType");
+                        String detail = rs.getString("Detail");
+                        String brand = rs.getString("Brand");
+                        String modelNumber = rs.getString("ModelNumber");
+                        String partNumber = rs.getString("PartNumber");
+                        String itemShape = rs.getString("ItemShape");
+                        String dialWindowMaterialType = rs.getString("DialWindowMaterialType");
+                        String displayType = rs.getString("DisplayType");
+                        String clasp = rs.getString("Clasp");
+                        String caseMaterial = rs.getString("CaseMaterial");
+                        String caseDiameter = rs.getString("CaseDiameter");
+                        String caseThickness = rs.getString("CaseThickness");
+                        String bandMaterial = rs.getString("BandMaterial");
+                        String bandLength = rs.getString("BandLength");
+                        String bandWidth = rs.getString("BandWidth");
+                        String bandColor = rs.getString("BandColor");
+                        String dialColor = rs.getString("DialColor");
+                        String calendar = rs.getString("Calen");
+                        String waterDepth = rs.getString("WaterDepth");
+                        Double priceDefault = rs.getDouble("PriceDefault");
+                        Double priceCurrent = rs.getDouble("PriceCurrent");
+                        String image = rs.getString("images");
+        //                
+                        productObject = new Product(id, nameRs, idType, detail, brand,modelNumber, partNumber, displayType, itemShape, dialWindowMaterialType, clasp, caseMaterial, caseDiameter, caseThickness, bandMaterial, bandLength, bandWidth,bandColor, dialColor, calendar, waterDepth, priceCurrent, priceDefault, image);
+                        listProductByIdType.add(productObject);
+
+                    }
+                } catch (Exception e) {
+                }
+                DB.disconnect();
+                String json = new Gson().toJson(listProductByIdType);
+
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(json);
+        }
         if(request.getParameter("count").toString().equals("get_watches_sale")){
             String limitGet = request.getParameter("limit").toString();
             ArrayList<Object> listProductSale = new ArrayList<>();

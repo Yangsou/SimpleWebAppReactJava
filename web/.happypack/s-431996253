@@ -1,0 +1,131 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = require('react-redux');
+
+var _reactRouter = require('react-router');
+
+var _homeActions = require('../../action/homeActions');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var actions = require('../../action/navActions');
+
+var _require = require('../../reducers/navReducers'),
+    getIsShowNav = _require.getIsShowNav;
+
+var Navigation = function (_Component) {
+    _inherits(Navigation, _Component);
+
+    function Navigation(props) {
+        _classCallCheck(this, Navigation);
+
+        var _this = _possibleConstructorReturn(this, (Navigation.__proto__ || Object.getPrototypeOf(Navigation)).call(this, props));
+
+        _this.handleClick = _this.handleClick.bind(_this);
+        _this.state = {
+            category: []
+        };
+        return _this;
+    }
+
+    _createClass(Navigation, [{
+        key: 'handleClick',
+        value: function handleClick(id) {
+            this.props.dispatch((0, _homeActions.getWatchByType)(id));
+        }
+    }, {
+        key: 'initCategory',
+        value: function initCategory() {
+            var _this2 = this;
+
+            return (0, _homeActions.fetchTypeWatches)().then(function (res) {
+                // return res;
+                _this2.setState({ category: res });
+            });
+        }
+    }, {
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.initCategory();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            var category = this.state.category;
+            // var navXsCln = this.props.isShowNav ? ' xs-active' : '';
+            return _react2.default.createElement(
+                'div',
+                { className: 'nav container' },
+                _react2.default.createElement(
+                    'ul',
+                    { className: 'nav_menu' },
+                    _react2.default.createElement(
+                        'li',
+                        { className: 'nav_menu_item' },
+                        _react2.default.createElement(
+                            _reactRouter.Link,
+                            { to: '/' },
+                            'Home',
+                            _react2.default.createElement('span', { className: 'line' })
+                        )
+                    ),
+                    _react2.default.createElement(
+                        'li',
+                        { className: 'nav_menu_item' },
+                        _react2.default.createElement(
+                            _reactRouter.Link,
+                            { to: '/' },
+                            'Watches',
+                            _react2.default.createElement('span', { className: 'line' })
+                        ),
+                        _react2.default.createElement(
+                            'div',
+                            { className: 'nav_sub' },
+                            category.length > 0 ? _react2.default.createElement(
+                                'div',
+                                { className: '' },
+                                category.map(function (item, index) {
+                                    return _react2.default.createElement(
+                                        _reactRouter.Link,
+                                        { onClick: function onClick() {
+                                                _this3.handleClick(item.id);
+                                            },
+                                            to: 'category/' + item.id },
+                                        item.name
+                                    );
+                                })
+                            ) : ''
+                        )
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Navigation;
+}(_react.Component);
+
+function mapStateToProps(state) {
+    return {
+        isShowNav: getIsShowNav(state)
+    };
+}
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Navigation);

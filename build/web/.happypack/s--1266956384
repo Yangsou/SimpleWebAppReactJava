@@ -36,6 +36,14 @@ var _Login = require('./modules/Login/page/Login');
 
 var _Login2 = _interopRequireDefault(_Login);
 
+var _Search = require('./modules/Search/page/Search');
+
+var _Search2 = _interopRequireDefault(_Search);
+
+var _Category = require('./modules/Category/page/Category');
+
+var _Category2 = _interopRequireDefault(_Category);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -108,6 +116,22 @@ var Routes = function (_Component) {
             getComponent: function getComponent(location, callback) {
               require.ensure([], function (require) {
                 callback(null, require('./modules/Login/page/Login').default);
+              });
+            }
+          }),
+          _react2.default.createElement(_reactRouter.Route, {
+            path: 'search/:cuid',
+            getComponent: function getComponent(location, callback) {
+              require.ensure([], function (require) {
+                callback(null, require('./modules/Search/page/Search').default);
+              });
+            }
+          }),
+          _react2.default.createElement(_reactRouter.Route, {
+            path: 'category/:cuid',
+            getComponent: function getComponent(location, callback) {
+              require.ensure([], function (require) {
+                callback(null, require('./modules/Category/page/Category').default);
               });
             }
           })
