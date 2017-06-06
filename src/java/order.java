@@ -5,6 +5,7 @@
  */
 
 import com.google.gson.Gson;
+import config.Comment;
 import config.Order;
 import database.DBManager;
 import java.io.IOException;
@@ -61,6 +62,34 @@ public class order extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        if(request.getParameter("scan").toString().equals("get_comment")){
+            String idWatch = request.getParameter("idWatch").toString();
+            ArrayList<Object> list = new ArrayList<>();
+
+            DBManager DB = new DBManager();
+            DB.DBManager();
+            ResultSet rs = DB.GetComment(idWatch);
+            try {
+                while(rs.next()){
+                    String id = rs.getString("id");
+                    String cmt = rs.getString("comment");
+                    String idWatchRs = rs.getString("idWatch");
+                    String idUser = rs.getString("idUser");
+                    String date = rs.getString("date");
+                    String username = rs.getString("username");
+                    Comment comment = new Comment(id, cmt, idWatchRs, idUser, username, date);
+                    list.add(comment);
+                }
+            } catch (Exception e) {
+            }
+            DB.disconnect();
+            
+            String json = new Gson().toJson(list);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write(json);
+        }
+        
         if(request.getParameter("scan").toString().equals("getOrderByIdUser")){
             String idUser = request.getParameter("idUser").toString();
             ArrayList<Object> list = new ArrayList<>();

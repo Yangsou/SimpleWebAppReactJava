@@ -427,3 +427,38 @@ and open the template in the editor.
         color: $color-white;
     }
 }
+
+.detail_cmt_avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid $color-green;
+    @media (min-width: 768px){
+        width: 50px;
+        height: 50px;
+    }
+    @media (min-width: 992px){
+        width: 60px;
+        height: 60px;
+        
+    }
+    @media (min-width: 1200px){
+        width: 68px;
+        height: 68px;
+    }
+}
+
+.detail_cmt_cmt{
+    resize: none;
+    width: 100%;
+    height: 2.8em;
+    /*line-height: 1.1em;*/
+    /*padding-top: 0.3em;*/
+    border-color: rgba($color-black, 0.45);
+}
+
+.detail_cmt_text{
+    padding: 8px;
+    border: 1px solid rgba(30,140,130, .34);
+    border-radius: 8px;
+}

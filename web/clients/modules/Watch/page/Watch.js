@@ -11,7 +11,9 @@ import {connect} from 'react-redux';
 
 import {
     getWatchesById,
-    addOrderById
+    addOrderById,
+    submitCmt,
+    getCmt
 } from '../../../action/homeActions';
 import {
     getOrder,
@@ -25,9 +27,13 @@ class Watch extends Component{
         super(props);    
         this.state = {
             watch: {},
-            tabValue: 'detail'
+            tabValue: 'comment',
+            cmtValue: '',
+            cmtGroup: []
         };
         this.handleClickAddOrder = this.handleClickAddOrder.bind(this);
+        this.handleSubmitCmt = this.handleSubmitCmt.bind(this);
+        this.handleChangeCmt = this.handleChangeCmt.bind(this);
     }
     initProduct(id){
         return getWatchesById(id).then(res => {
@@ -35,6 +41,11 @@ class Watch extends Component{
             
         });
     };
+    initComment(idWatch){
+        return getCmt(idWatch).then(res => {
+            this.setState({cmtGroup: res});
+        });
+    }
     handleMousemove(e){
         var posX = event.offsetX ? (event.offsetX) : event.pageX - this.offsetLeft;
         var posY = event.offsetY ? (event.offsetY) : event.pageY - this.offsetTop;
@@ -58,16 +69,40 @@ class Watch extends Component{
         }
         
     }
+    handleChangeCmt(){
+        this.setState({cmtValue: this.refs.inputCmt.value});
+    }
+    handleSubmitCmt(e){
+        var cmt = this.state.cmtValue;
+        var idWatch = this.state.watch.IdProduct;
+        var time = Date.now();
+        if(e.key === 'Enter'){
+            if(cmt.trim() !== ''){
+                var user = this.props.user;
+                if(typeof user.id === 'undefined'){
+                    this.props.history.push('login');
+                } else{
+                    submitCmt(time, cmt, idWatch, user.id, time).then( res => {
+                        this.setState({cmtValue: ''});
+                        this.initComment(idWatch);
+                        this.refs.inputCmt.blur();
+                    });
+                    
+                }
+            }
+        }
+    }
     componentWillMount(){
         this.initProduct(this.props.params.cuid);
+        this.initComment(this.props.params.cuid);
     }
     componentDidMount(){
-
     }
     render(){
 //        console.log('order', this.props.order);
 //        console.log('id', this.props.params.cuid);
         var watch = this.state.watch;
+        var cmtGroup = this.state.cmtGroup;
         return(
             <div className="container">
                 <div className="row">
@@ -210,7 +245,38 @@ class Watch extends Component{
                                     
                                 </div>
                                 <div style={{display: this.state.tabValue == 'rate' ? 'block' : 'none'}} id="tabs-content-2" className="tabs-content_wrap">Chức năng đang phát triển ...</div>
-                                <div style={{display: this.state.tabValue == 'comment' ? 'block' : 'none'}} id="tabs-content-3" className="tabs-content_wrap">Chức năng đang phát triển ...</div>
+                                <div style={{display: this.state.tabValue == 'comment' ? 'block' : 'none'}} id="tabs-content-3" className="tabs-content_wrap">
+                                            <div className="detail_cmt_input">
+                                                <div className="pull-left">
+                                                    <img src="./assets/images/avatar06.png" className="detail_cmt_avatar" />
+                                                </div>
+                                                <div className="pull-right" style={{width: `calc(100% - 60px)`}}>
+                                                    <input ref="inputCmt" className="input-default detail_cmt_cmt"
+                                                        placeholder="write some thing......."
+                                                        onKeyPress={this.handleSubmitCmt}
+                                                        value={this.state.cmtValue}
+                                                        onChange={this.handleChangeCmt}/>
+                                                </div>
+                                            </div>
+                                            <div className="detail_cmt_container">
+                                            {
+                                                cmtGroup.map( (cmtGroup, index) => {
+                                                    return (
+                                                            <div className="m-t-15 pull-left detail_cmt_content" style={{clear: 'both', width: '100%'}}>
+                                                                <div className="pull-left">
+                                                                    <img src="./assets/images/avatar06.png" className="detail_cmt_avatar"/>
+                                                                </div>
+                                                                <div className="pull-right" style={{width: `calc(100% - 60px)`}}>
+                                                                    <h4>{cmtGroup.username}</h4>
+                                                                    <p className="detail_cmt_text">{cmtGroup.comment}</p>
+                                                                </div>
+                                                            </div>
+                                                    )
+                                                })
+                                            }
+                                                
+                                            </div>
+                                </div>
                               </div>
                             </div>
                           </div>

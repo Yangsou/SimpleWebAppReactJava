@@ -6,6 +6,7 @@
 
 import com.google.gson.Gson;
 import config.Category;
+import config.Comment;
 import config.Order;
 import config.Product;
 import config.ProductSale;
@@ -264,8 +265,8 @@ public class api extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);
         }
-        
-        
+       
+         
         if(request.getParameter("count").toString().equals("all")){
             ArrayList<Object> list = new ArrayList<>();
             DBManager DB = new DBManager();
@@ -409,6 +410,20 @@ public class api extends HttpServlet {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);
+        }
+        if(request.getParameter("scan").toString().equals("submit_comment")){
+            String id = request.getParameter("id").toString();
+            String idUser = request.getParameter("idUser").toString();
+            String cmt = request.getParameter("cmt").toString();
+            String idWatch = request.getParameter("idWatch").toString();
+            String time = request.getParameter("time").toString();
+            DBManager DB = new DBManager();
+            DB.DBManager();
+            DB.SubmitCmt(id, cmt, idWatch, idUser, time);
+            DB.disconnect();
+            response.setContentType("text/html");
+            response.setCharacterEncoding("UTF-8");
+            response.getWriter().write("success");
         }
         
     }

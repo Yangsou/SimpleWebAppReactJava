@@ -11,26 +11,20 @@ package config;
  */
 public class Comment {
 
-    public String getId() {
-        return id;
-    }
-
-    public String getCmt() {
-        return cmt;
-    }
-
-    public void setId(String id) {
+    public Comment(String id, String comment, String idWatch, String idUser, String username, String timeCmt) {
         this.id = id;
+        this.comment = comment;
+        this.idWatch = idWatch;
+        this.idUser = idUser;
+        this.username = username;
+        this.timeCmt = timeCmt;
     }
 
-    public void setCmt(String cmt) {
-        this.cmt = cmt;
-    }
-
-    public Comment(String id, String cmt) {
-        this.id = id;
-        this.cmt = cmt;
-    }
     private String id;
-    private String cmt;
+    private String comment;
+    private String idWatch;
+    private String idUser;
+    private String username;
+    private String timeCmt;
+    
 }

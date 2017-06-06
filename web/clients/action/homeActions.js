@@ -155,3 +155,11 @@ export function getUserByIdCookie(id){
 export function getUserById(id){
     return $.get("api", {scan: 'get_user_by_id', id: id}, res => res);
 }
+
+export function submitCmt(id, cmt, idWatch, idUser,time){
+    return $.post("api", {scan: 'submit_comment', id: id, cmt: cmt, idWatch: idWatch, idUser: idUser, time: time}, res => res);
+}
+
+export function getCmt(idWatch){
+    return $.get("order", {scan: 'get_comment', idWatch: idWatch}, res => res);
+}

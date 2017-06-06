@@ -156,6 +156,35 @@ public class DBManager {
         } catch (Exception e) {
         }
     }
+    public ResultSet GetComment(String idWatch){
+        Statement st;
+        ResultSet rs = null;
+        try {
+            st = con.createStatement();
+            String query = "SELECT * FROM `comment` AS t1 JOIN `user` AS t2 ON t1.idUser = t2.id WHERE t1.idWatch = ?";
+            PreparedStatement pre = con.prepareStatement(query);
+            pre.setString(1, idWatch);
+            rs = pre.executeQuery();
+        } catch (Exception e) {
+        }
+        
+        return rs;
+    }
+    public void SubmitCmt(String id, String cmt, String idWatch, String idUser, String time){
+        Statement st;
+        try {
+            st = con.createStatement();
+            String query = "INSERT INTO comment (id, comment, idWatch, idUser, date) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement pre = con.prepareStatement(query);
+            pre.setString(1, id);
+            pre.setString(2, cmt);
+            pre.setString(3, idWatch);
+            pre.setString(4, idUser);
+            pre.setString(5, time);
+            pre.execute();
+        } catch (Exception e) {
+        }
+    }
     public void AddOrder(String id, String idUser, String idWatch){
         Statement st;
         try {
